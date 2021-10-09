@@ -1,0 +1,54 @@
+.st-tabs {
+  display: flex;
+
+  .st-tabs__tabs {
+    display: flex;
+
+    li {
+      list-style-type: none;
+      border: 1px solid #ccc;
+      background-color: #eee;
+    }
+    li.st-tabs__tab--current {
+      background-color: #fff;
+    }
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+  }
+}
+
+.st-tabs.st-tabs--horizontal {
+  flex-direction: column;
+
+  .st-tabs__tabs {
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+
+    li {
+      margin-bottom: -1px;
+      padding-bottom: 1px;
+    }
+    li.st-tabs__tab--current {
+      border-bottom-width: 0;
+    }
+  }
+}
+
+.st-tabs.st-tabs--vertical {
+  flex-direction: row;
+
+  .st-tabs__tabs {
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+
+    li {
+      margin-right: -1px;
+      padding-right: 1px;
+    }
+    li.st-tabs__tab--current {
+      border-right-width: 0;
+    }
+  }
+}
