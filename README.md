@@ -33,22 +33,27 @@ Import css:
 Build html as follows:
 
 ```html
-<div class="st-tabs" data-controller="tabs">
-  <ul class="st-tabs__tabs" data-tabs-target="tabs">
-    <li><a href="#tab1"></li>
-    <li><a href="#tab2"></li>
+<div class="st-tabs st-tabs--horizontal" data-controller="tabs">
+  <ul class="st-tabs__tabs">
+    <li class="st-tabs__tab"><a href="#tab1" data-action="tabs#show"></li>
+    <li class="st-tabs__tab"><a href="#tab2" data-action="tabs#show"></li>
   </ul>
-  <div class="st-tabs__panes">
-    <div data-pane-id="tab1">
-      <p>tab1 content</p>
-    </div>
-    <div data-pane-id="tab2">
-      <p>tab2 content</p>
-    </div>
+  <div class="st-tabs__pane" data-tabs-pane-id="tab1">
+    <p>tab1 content</p>
+  </div>
+  <div class="st-tabs__pane" data-tabs-pane-id="tab2">
+    <p>tab2 content</p>
   </div>
 </div>
 ```
 
+You can also build vertical tabs as follows:
+
+```html
+<div class="st-tabs st-tabs--vertical" data-controller="tabs">
+  ...
+</div>
+```
 ### Options
 
 #### store-key
@@ -58,6 +63,7 @@ Save tab state to `sessionStorage`:
 ```html
 <div data-controller="tabs"
      data-tabs-store-key-value="YOUR_KEY">
+  ...
 </div>
 ```
 

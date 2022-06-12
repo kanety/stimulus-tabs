@@ -25,8 +25,7 @@
   },
   "amdName": "StimulusTabs",
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.0",
-    "@kanety/stimulus-static-actions": "^1.0.1"
+    "@hotwired/stimulus": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

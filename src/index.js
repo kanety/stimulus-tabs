@@ -1,19 +1,16 @@
 import { Controller } from '@hotwired/stimulus';
-import '@kanety/stimulus-static-actions';
 import Store from './store';
 import './index.scss';
 
 export default class extends Controller {
-  static targets = ['tabs'];
   static values = {
     storeKey: String
   };
-  static actions = [
-    ['tabs', 'click->show']
-  ];
 
   get tabs() {
-    return Array.from(this.tabsTarget.children);
+    return this.context.bindingObserver.bindings
+               .filter(binding => binding.action.methodName == 'show')
+               .map(binding => binding.action.element.parentNode);
   }
 
   get currentTabs() {
@@ -49,17 +46,21 @@ export default class extends Controller {
   }
 
   toggleClass(tab, pane, flag) {
-    tab.classList.toggle('st-tabs__tab--current', flag);
-    pane.style.display = flag ? '' : 'none';
-    pane.classList.toggle('st-tabs__pane--visible', flag);
+    if (flag) {
+      tab.classList.add('st-tabs__tab--current');
+      pane.classList.add('st-tabs__pane--visible');
+    } else {
+      tab.classList.remove('st-tabs__tab--current');
+      pane.classList.remove('st-tabs__pane--visible');
+    }
   }
 
   findPane(tab) {
-    let id = this.getTabID(tab);
-    return this.element.querySelector(`[data-pane-id="${id}"]`);
+    let id = this.getPaneID(tab);
+    return this.scope.findElement(`[data-tabs-pane-id="${id}"]`);
   }
 
-  getTabID(tab) {
+  getPaneID(tab) {
     return tab.querySelector('a[href]').getAttribute('href').replace(/^#/, '');
   }
 }

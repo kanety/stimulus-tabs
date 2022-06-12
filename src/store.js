@@ -21,16 +21,17 @@ export default class Store {
 
     let idSet = new Set(ids);
     this.tabs.forEach(tab => {
-      if (idSet.has(this.controller.getTabID(tab))) {
-        this.controller.open(tab)
+      let pane = this.controller.findPane(tab);
+      if (idSet.has(this.controller.getPaneID(tab))) {
+        this.controller.toggleClass(tab, pane, true);
       } else {
-        this.controller.close(tab);
+        this.controller.toggleClass(tab, pane, false);
       }
     });
   }
 
   save() {
-    let ids = this.currentTabs.map(tab => this.controller.getTabID(tab));
+    let ids = this.currentTabs.map(tab => this.controller.getPaneID(tab));
     this.constructor.save(this.key, ids);
   }
 

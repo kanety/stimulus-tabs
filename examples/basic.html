@@ -19,10 +19,26 @@
   <link rel="stylesheet" href="/dist/index.css"></link>
 </head>
 <body>
-  <h1>Store current tab</h1>
-  <div class="st-tabs st-tabs--horizontal"
-       data-controller="tabs"
-       data-tabs-store-key-value="tabs">
+  <h1>Horizontal tab</h1>
+  <div class="st-tabs st-tabs--horizontal" data-controller="tabs">
+    <ul class="st-tabs__tabs">
+      <li class="st-tabs__tab"><a href="#tab1" data-action="tabs#show">Tab1</a></li>
+      <li class="st-tabs__tab"><a href="#tab2" data-action="tabs#show">Tab2</a></li>
+      <li class="st-tabs__tab"><a href="#tab3" data-action="tabs#show">Tab3</a></li>
+    </ul>
+    <div class="st-tabs__pane" data-tabs-pane-id="tab1">
+      <p>tab1 content</p>
+    </div>
+    <div class="st-tabs__pane" data-tabs-pane-id="tab2">
+      <p>tab2 content</p>
+    </div>
+    <div class="st-tabs__pane" data-tabs-pane-id="tab3">
+      <p>tab3 content</p>
+    </div>
+  </div>
+
+  <h1>Vertical tab</h1>
+  <div class="st-tabs st-tabs--vertical" data-controller="tabs">
     <ul class="st-tabs__tabs">
       <li class="st-tabs__tab"><a href="#tab1" data-action="tabs#show">Tab1</a></li>
       <li class="st-tabs__tab"><a href="#tab2" data-action="tabs#show">Tab2</a></li>
